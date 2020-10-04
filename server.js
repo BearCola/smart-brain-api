@@ -4,13 +4,13 @@ const bcrypt = require("bcrypt-nodejs");
 const cors = require("cors");
 const knex = require("knex");
 
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0;
+
 const db = knex({
   client: "pg",
   connection: {
-    host: "postgresql-cubic-85500",
-    user: "diablo1031",
-    password: "",
-    database: "smart-brain",
+    connectionString: process.env.DATABASE_URL,
+    ssl: true,
   },
 });
 
